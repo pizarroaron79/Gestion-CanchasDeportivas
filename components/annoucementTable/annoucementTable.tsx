@@ -158,7 +158,7 @@ export function PublishedList({ publishedItems }: PublishedListProps) {
                 <td className="px-4 py-2 border-b text-center">
                   {item.image ? (
                     <Image
-                      src={`http://127.0.0.1:8000${item.image}`}
+                      src={`https://api.dev.phaqchas.com/public/${item.image}`}
                       alt={item.title || "Imagen del anuncio"}
                       width={50}
                       height={30}
