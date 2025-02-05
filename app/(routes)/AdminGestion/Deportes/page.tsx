@@ -61,7 +61,7 @@ export default function FormPage() {
   return (
     <div className="flex flex-col md:flex-row">
       <div className="w-full md:w-1/2 p-10">
-        <h1 className="text-2xl font-semibold mb-4 text-center font-inter text-[#7B7B7B] text-[32px]">Generar anuncios</h1>
+        <h1 className="text-2xl font-semibold mb-4 text-center font-inter text-[#7B7B7B] text-[32px]">Generar deportes</h1>
 
         {isMobile ? (
           <>
@@ -69,7 +69,7 @@ export default function FormPage() {
               className="w-full bg-[#E1BC00] text-white py-2 px-4 rounded-md"
               onClick={() => setIsModalOpen(true)}
             >
-              + Crear Anuncio
+              + Crear deporte
             </Button>
 
             {/* Modal */}
@@ -85,7 +85,7 @@ export default function FormPage() {
                     &times;
                   </button>
               
-                  <h2 className="text-xl font-bold mb-10">Nuevo Anuncio</h2>
+                  <h2 className="text-xl font-bold mb-10">Nuevo anuncio</h2>
                   <AnnouncementForm reloadAnnouncements={reloadAnnouncements} />
                 </div>
               </div>

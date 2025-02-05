@@ -10,55 +10,57 @@ import {
 import Link from "next/link";
 
 export default function NavbarLeft() {
-  const [isClientMenuOpen, setIsClientMenuOpen] = useState(false);
-  const [isAdminMenuOpen, setIsAdminMenuOpen] = useState(false);
-  const [isReportMenuOpen, setIsReportMenuOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+
+  const toggleMenu = (menuName: string) => {
+    setOpenMenu((prevMenu) => (prevMenu === menuName ? null : menuName));
+  };
 
   return (
-    <nav className="fixed top-0 left-0 h-screen w-75 bg-white text-[#191D23] p-6 z-50 shadow-md"> {/* Aumento del ancho del menú */}
+    <nav className="fixed top-0 -mt-4 sm:mt-0 left-0 h-screen w-75 sm:w-72 bg-white text-[#191D23] p-6 z-50 shadow-md">
       <div className="text-gray-500 text-sm mb-4">Menú</div>
       <ul className="space-y-3">
-        {/* Link Reserva */}
-        <li className="flex items-center space-x-2 text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer transition duration-300 w-full">
+        <li className="flex items-center space-x-2 text-[13px] sm:text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full">
           <Link href="/AdminGestion/Reserva" className="flex items-center space-x-2 w-full">
-            <FaCalendarCheck className="text-xl" />
+            <FaCalendarCheck className="sm:text-xl" />
             <span>Reserva</span>
           </Link>
         </li>
 
-        {/* Link Anuncio */}
-        <li className="flex items-center space-x-2 text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer transition duration-300 w-full">
+        <li className="flex items-center space-x-2 text-[13px] sm:text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full">
           <Link href="/AdminGestion/Anuncio" className="flex items-center space-x-2 w-full">
-            <FaBullhorn className="text-xl" />
+            <FaBullhorn className="sm:text-xl" />
             <span>Anuncio web</span>
           </Link>
         </li>
 
         {/* Mantenimiento Local */}
         <li
-          className="flex items-center space-x-2 text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
-          onClick={() => setIsClientMenuOpen(!isClientMenuOpen)}
+          className="flex items-center space-x-2 text-[13px] sm:text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+          onClick={() => toggleMenu("mantenimiento")}
         >
-          <FaUser className="text-xl" />
+          <FaUser className="sm:text-xl" />
           <span>Mantenimiento Local</span>
           <FaChevronDown
-            className={`ml-auto transition-transform duration-300 ${isClientMenuOpen ? "rotate-180" : ""}`}
+            className={`ml-auto transition-transform duration-300 ${
+              openMenu === "mantenimiento" ? "rotate-180" : ""
+            }`}
           />
         </li>
-        {isClientMenuOpen && (
-          <ul className="space-y-2 pl-6 border-l-2 border-gray-300 w-full"> {/* Asegura que los submenús ocupen todo el ancho */}
-            <li className="flex items-center justify-between">
+        {openMenu === "mantenimiento" && (
+          <ul className="space-y-2 pl-6 border-l-2 border-gray-400 w-full bg-gray-100">
+            <li>
               <Link
                 href="/AdminGestion/Deportes"
-                className="text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+                className="text-[13px] sm:text-[16px] font-semibold font-manrope  hover:bg-gray-300 p-3 rounded-md block"
               >
-               Deportes
+                Deportes
               </Link>
             </li>
-            <li className="flex items-center justify-between">
+            <li>
               <Link
                 href="/AdminGestion/Canchas"
-                className="text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+                className="text-[13px] sm:text-[16px] font-semibold font-manrope  hover:bg-gray-300 p-3 rounded-md block"
               >
                 Canchas
               </Link>
@@ -66,55 +68,59 @@ export default function NavbarLeft() {
           </ul>
         )}
 
-        {/* Cliente Menu */}
+        {/* Cliente */}
         <li
-          className="flex items-center space-x-2 text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
-          onClick={() => setIsClientMenuOpen(!isClientMenuOpen)}
+          className="flex items-center space-x-2 text-[13px] sm:text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+          onClick={() => toggleMenu("cliente")}
         >
-          <FaUser className="text-xl" />
+          <FaUser className="sm:text-xl" />
           <span>Cliente</span>
           <FaChevronDown
-            className={`ml-auto transition-transform duration-300 ${isClientMenuOpen ? "rotate-180" : ""}`}
+            className={`ml-auto transition-transform duration-300 ${
+              openMenu === "cliente" ? "rotate-180" : ""
+            }`}
           />
         </li>
-        {isClientMenuOpen && (
-          <ul className="space-y-2 pl-6 border-l-2 border-gray-300 w-full"> {/* Asegura que los submenús ocupen todo el ancho */}
-            <li className="flex items-center justify-between">
+        {openMenu === "cliente" && (
+          <ul className="space-y-2 pl-6 border-l-2 border-gray-400 w-full bg-gray-100">
+            <li>
               <Link
-                href="/Mantenimiento-cliente"
-                className="text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+                href="/AdminGestion/Mantenimiento-cliente"
+                className="text-[13px] sm:text-[16px] font-semibold font-manrope  hover:bg-gray-300 p-3 rounded-md block"
               >
-                Lista Cliente
+                Mantenimiento
               </Link>
             </li>
-            <li className="flex items-center justify-between">
+            <li>
               <Link
                 href="/AdminGestion/Historial-cliente"
-                className="text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+                className="text-[13px] sm:text-[16px] font-semibold font-manrope  hover:bg-gray-300 p-3 rounded-md block"
               >
-                Lista suspendidos...
+               Clientes frecuentes
               </Link>
             </li>
           </ul>
         )}
 
-        {/* Administradores Menu */}
+        {/* Administradores */}
         <li
-          className="flex items-center space-x-2 text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
-          onClick={() => setIsAdminMenuOpen(!isAdminMenuOpen)}
+          className="flex items-center space-x-2 text-[13px] sm:text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+          onClick={() => toggleMenu("admin")}
         >
-          <FaUserShield className="text-xl" />
+          <FaUserShield className="sm:text-xl" />
           <span>Administradores</span>
           <FaChevronDown
-            className={`ml-auto transition-transform duration-300 ${isAdminMenuOpen ? "rotate-180" : ""}`}
+            className={`ml-auto transition-transform duration-300 ${
+              openMenu === "admin" ? "rotate-180" : ""
+            }`}
           />
         </li>
-        {isAdminMenuOpen && (
-          <ul className="space-y-2 pl-6 border-l-2 border-gray-300 w-full"> {/* Asegura que los submenús ocupen todo el ancho */}
-            <li className="flex items-center justify-between">
+        {openMenu === "admin" && (
+          <ul className="space-y-2 pl-6 border-l-2 border-gray-400 w-full bg-gray-100">
+            <li>
               <Link
                 href="/AdminGestion/Mantenimiento-rol"
-                className="text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+                className="text-[13px] sm:text-[16px] font-semibold font-manrope  hover:bg-gray-300 p-3 rounded-md block"
               >
                 Mantenimiento roles
               </Link>
@@ -122,31 +128,25 @@ export default function NavbarLeft() {
           </ul>
         )}
 
-        {/* Reportes Menu */}
+        {/* Reportes */}
         <li
-          className="flex items-center space-x-2 text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
-          onClick={() => setIsReportMenuOpen(!isReportMenuOpen)}
+          className="flex items-center space-x-2 text-[13px] sm:text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+          onClick={() => toggleMenu("reporte")}
         >
-          <FaFileAlt className="text-xl" />
+          <FaFileAlt className="sm:text-xl" />
           <span>Reporte</span>
           <FaChevronDown
-            className={`ml-auto transition-transform duration-300 ${isReportMenuOpen ? "rotate-180" : ""}`}
+            className={`ml-auto transition-transform duration-300 ${
+              openMenu === "reporte" ? "rotate-180" : ""
+            }`}
           />
         </li>
-        {isReportMenuOpen && (
-          <ul className="space-y-2 pl-6 border-l-2 border-gray-300 w-full"> {/* Asegura que los submenús ocupen todo el ancho */}
-            <li className="flex items-center justify-between">
-              <Link
-                href="/AdminGestion/Report-semana"
-                className="text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
-              >
-                Semana
-              </Link>
-            </li>
-            <li className="flex items-center justify-between">
+        {openMenu === "reporte" && (
+          <ul className="space-y-2 pl-6 border-l-2 border-gray-400 bg-gray-100 w-full">
+            <li>
               <Link
                 href="/AdminGestion/Report-mes"
-                className="text-[16px] font-semibold font-manrope hover:bg-gray-100 p-3 rounded-md cursor-pointer w-full"
+                className="text-[13px] sm:text-[16px] font-semibold font-manrope hover:bg-gray-300 p-3 rounded-md block"
               >
                 Mes
               </Link>

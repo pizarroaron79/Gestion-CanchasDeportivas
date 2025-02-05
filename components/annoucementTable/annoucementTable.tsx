@@ -145,7 +145,7 @@ export function PublishedList({ publishedItems }: PublishedListProps) {
       )}
 
       {/* Tabla */}
-      <div className="overflow-x-auto">
+      <div className="">
         <table className="min-w-full table-auto border-collapse bg-white rounded-lg shadow-md">
           <thead className="bg-gray-100 text-sm text-gray-600">
             <tr>

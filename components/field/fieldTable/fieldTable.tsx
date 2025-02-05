@@ -91,7 +91,7 @@ export function PublishedList({ FieldItems }: FieldProps) {
   <Dialog open={showModal} onOpenChange={(open) => setShowModal(open)}>
   <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 ">
     <div className="p-4 sm:p-6 px-4 sm:px-6 bg-white rounded-lg shadow-xl w-full max-w-lg sm:max-w-md md:max-w-sm lg:max-w-md xl:max-w-lg ml-5 mr-5">
-      <h2 className="text-base sm:text-lg font-semibold mb-4">Editar Cancha</h2>
+      <h2 className="text-base sm:text-lg font-semibold mb-4">Editar cancha</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -101,7 +101,7 @@ export function PublishedList({ FieldItems }: FieldProps) {
         }}
       >
         <div className="mb-4">
-          <label htmlFor="name" className="block text-sm font-medium">Nombre de la Cancha</label>
+          <label htmlFor="name" className="block text-sm font-medium">Nombre de la cancha</label>
           <input
             type="text"
             id="name"
@@ -168,7 +168,7 @@ export function PublishedList({ FieldItems }: FieldProps) {
                         priority
                         />
                     ) : (
-                        <span>No Image</span>
+                        <span>No image</span>
                     )}
                     <span>{item.name}</span>
                     </td>

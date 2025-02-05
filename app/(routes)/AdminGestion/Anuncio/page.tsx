@@ -61,7 +61,7 @@ export default function FormPage() {
   return (
     <div className="flex flex-col md:flex-row">
       <div className="w-full md:w-1/2 p-10">
-        <h1 className="text-2xl font-semibold mb-4 text-center font-inter text-[#7B7B7B] text-[32px]">Generar anuncios</h1>
+        <h1 className="text-2xl font-semibold mb-4 text-center font-inter text-[#7B7B7B] text-[25px] sm:text-[32px]">Generar anuncios</h1>
 
         {isMobile ? (
           <>

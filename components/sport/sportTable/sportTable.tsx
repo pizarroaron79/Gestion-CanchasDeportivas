@@ -72,7 +72,7 @@ export function PublishedList({ publishedItems }: PublishedListProps) {
   <Dialog open={showModal} onOpenChange={(open) => setShowModal(open)}>
   <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 ">
     <div className="p-4 sm:p-6 px-4 sm:px-6 bg-white rounded-lg shadow-xl w-full max-w-lg sm:max-w-md md:max-w-sm lg:max-w-md xl:max-w-lg ml-5 mr-5">
-      <h2 className="text-base sm:text-lg font-semibold mb-4">Editar Anuncio</h2>
+      <h2 className="text-base sm:text-lg font-semibold mb-4">Editar deporte</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -82,7 +82,7 @@ export function PublishedList({ publishedItems }: PublishedListProps) {
         }}
       >
         <div className="mb-4">
-          <label htmlFor="title" className="block text-sm font-medium">Título</label>
+          <label htmlFor="title" className="block text-sm font-medium">Nombre</label>
           <input
             type="text"
             id="title"
@@ -93,7 +93,7 @@ export function PublishedList({ publishedItems }: PublishedListProps) {
         </div>
         <div className="flex space-x-4 ">
         <div className="w-full">
-  <label className="block text-xs sm:text-sm md:text-base font-medium">Precio Día</label>
+  <label className="block text-xs sm:text-sm md:text-base font-medium">Precio día</label>
   <input
     type="number"
     name="price_morning"
@@ -107,7 +107,7 @@ export function PublishedList({ publishedItems }: PublishedListProps) {
 </div>
 
   <div className="w-full">
-    <label className="block text-xs sm:text-sm md:text-base font-medium">Precio Noche</label>
+    <label className="block text-xs sm:text-sm md:text-base font-medium">Precio noche</label>
     <input
       type="number"
       name="price_evening"
